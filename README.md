@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/130968533.svg)](https://zenodo.org/badge/latestdoi/130968533)
 
 # Code and data OTU-PITI
 
