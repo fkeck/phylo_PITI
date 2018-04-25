@@ -1,0 +1,85 @@
+---
+title: "Results report"
+author: "F. Keck"
+date: "11 April 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(phylosignal)
+```
+
+```{r cars}
+load("results/workspace.RData")
+source("R/utils.R")
+```
+
+## Quality of read placements
+
+
+
+```{r Fig_1}
+plot(table(displace.node), main = "Insertion difference",
+     xlab = "Node distance from correct insertion position",
+     ylab = "Count", lwd = 5, lend = 1, las = 1)
+```
+
+## Quality of autecological values estimation
+
+Phylogenetic signal (Pagel's lambda)
+```{r pressure, echo=FALSE}
+IPS.phylosignal
+```
+
+Mean squared errors
+
+```{r}
+par(mfrow = c(1, 2))
+barplot(MSE.IPSS, las = 2, xlab = "Model of evolution", ylab = "Mean squared error", main = "IPSS")
+barplot(MSE.IPSV, las = 2, xlab = "Model of evolution", ylab = "Mean squared error", main = "IPSV")
+par(mfrow = c(1, 1))
+```
+
+```{r}
+MSE.IPSS
+MSE.IPSV
+```
+
+Test for squared error distribution shift
+```{r}
+wilcox.IPSS.pw.tests
+wilcox.IPSV.pw.tests
+```
+
+```{r}
+dotplot.phylo4d(trait.p4d, trait = "IPSS", tree.ladderize = TRUE, tree.type = "fan",
+                error.bar.sup = IPSS.e, error.bar.col = IPSS.col,
+                center = FALSE, scale = FALSE, grid.col = "white", data.xlim = c(0, 5),
+                grid.vertical = TRUE, tree.open.angle = 5, 
+                tip.cex = 0.5, dot.cex = 0.5, dot.col = IPSS.col, show.trait = FALSE,
+                show.data.axis = TRUE, grid.lty = 1)
+```
+```{r}
+table(cut(abs(IPSS.e[, 1]), c(0, 1, 2, 5)))
+```
+
+
+## Performances of biotic indices
+
+```{r}
+pairs(sites.IPS.scores,
+      xlim = c(1, 5), ylim = c(1, 5),
+      labels = c("IPS-MICROTAXO", "IPS-DNATAXO", "IPS-DNAPHYLO", "IPS-DNAHYBRID"),
+      lower.panel = panel.cor,
+      upper.panel = panel.txt,
+      diag.panel = panel.hist
+)
+```
+
+Test for squared error distribution shift
+```{r}
+wilcox.IPS.pw.tests
+```
+
+
