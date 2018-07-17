@@ -4,7 +4,7 @@
 
 This repository provides R code and data to reproduce results and figures from the paper:
 
-> Keck F., Vasselon V., Rimet F., Bouchez A. & Kahlert M. Boosting DNA metabarcoding for biomonitoring with phylogenetic estimation of OTUs' ecological profiles.
+> Keck F., Vasselon V., Rimet F., Bouchez A. & Kahlert M. 2018. Boosting DNA metabarcoding for biomonitoring with phylogenetic estimation of operational taxonomic units’ ecological profiles. Molecular Ecology Ressources. [https://doi.org/10.1111/1755-0998.12919](https://doi.org/10.1111/1755-0998.12919)
 
 ## Analyses
 
